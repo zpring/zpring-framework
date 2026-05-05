@@ -1,0 +1,30 @@
+plugins {
+	id 'java'
+}
+
+group = 'io.github.zpring'
+version = '0.0.1-SNAPSHOT'
+
+java {
+    withSourcesJar()
+    withJavadocJar()
+	toolchain {
+		languageVersion = JavaLanguageVersion.of(17)
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	testImplementation 'org.junit.jupiter:junit-jupiter:6.0.3'
+	testImplementation 'org.assertj:assertj-core:3.27.7'
+
+	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
+
