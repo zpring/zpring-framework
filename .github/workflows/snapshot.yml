@@ -28,8 +28,8 @@ jobs:
         publish: "true"
     - name: "Deploy"
       id: "deploy"
+	  if: ${{ false }}
       uses: "spring-io/artifactory-deploy-action@926d7f7cc810569395346bf3a4d91b380b3e355b" # 0.0.4
-	  if: false
       with:
         build-name: "zpring-framework-1.0.x"
         folder: "deployment-repository"
