@@ -9,4 +9,4 @@ jobs:
     - name: "Verify"
       id: "verify"
       shell: bash
-      run: "echo 'OK'"
+      run: "echo '${{ GITHUB_RUN_ID }}'"
