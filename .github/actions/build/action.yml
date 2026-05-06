@@ -1,0 +1,19 @@
+name: build
+inputs:
+  publish:
+    description: 'Whether to publish artifacts ready for deployment to Artifactory'
+    required: false
+    default: 'false'
+runs:
+  using: composite
+  steps:
+    - name: Build
+      id: build
+      if: ${{ inputs.publish == 'false' }}
+      shell: bash
+      run: ./gradlew build
+    - name: Publish
+      id: publish
+      if: ${{ inputs.publish == 'true' }}
+      shell: bash
+      run: ./gradlew -PdeploymentRepository=$(pwd)/deployment-repository build publishAllPublicationsToDeploymentRepository
