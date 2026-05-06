@@ -25,16 +25,18 @@ tasks.named('test') {
 	useJUnitPlatform()
 }
 
-publishing {
-	repositories {
-		maven {
-			name "deployment"
-			url "${deploymentRepository}"
+if (hasProperty('deploymentRepository')) {
+	publishing {
+		repositories {
+			maven {
+				name "deployment"
+				url "${deploymentRepository}"
+			}
 		}
-	}
-	publications {
-		maven(MavenPublication) {
-			from components.java
+		publications {
+			maven(MavenPublication) {
+				from components.java
+			}
 		}
 	}
 }
